@@ -8,8 +8,8 @@ Whatever checked below is the only content available in this repository. If item
 
 ## Part 1: Fundamentals of Machine Learning
 
-## Chapter 1: The Machine Learning Landscape
+### Chapter 1: The Machine Learning Landscape
 
-- [ ] Intro to Machiine Learning
-- [x] Main Challenge
-- [x] Testing and Validating
+- [ ] Intro to Machine Learning
+- [ ] Main Challenge
+- [ ] Testing and Validating
