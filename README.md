@@ -8,6 +8,6 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 
 - [X] Introduction
 - [X] Machine Learning Types
-- [ ] Supervised vs Unsupervised
+- [X] Supervised vs Unsupervised
 - [ ] Batch vs Online
 - [ ] Instances Based vs Model Based
