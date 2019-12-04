@@ -10,6 +10,8 @@ Whatever checked below is the only content available in this repository. If item
 
 ### Chapter 1: The Machine Learning Landscape
 
-- [ ] Intro to Machine Learning
-- [ ] Main Challenge
-- [ ] Testing and Validating
+- [X] Introduction
+- [X] Machine Learning Types
+- [ ] Supervised vs Unsupervised
+- [ ] Batch vs Online
+- [ ] Instances Based vs Model Based
