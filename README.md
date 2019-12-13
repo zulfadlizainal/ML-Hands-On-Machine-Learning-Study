@@ -10,4 +10,9 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Machine Learning Types
 - [X] Supervised vs Unsupervised
 - [X] Batch vs Online
-- [ ] Instances Based vs Model Based
+- [X] Instances Based vs Model Based
+- [ ] Machine Learning Challenges
+
+### Chapter 2: End to End Machine Learning Project
+
+- [ ] Working with Real Data
