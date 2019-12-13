@@ -11,8 +11,15 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Supervised vs Unsupervised
 - [X] Batch vs Online
 - [X] Instances Based vs Model Based
-- [ ] Machine Learning Challenges
+- [X] Machine Learning Challenges
 
 ### Chapter 2: End to End Machine Learning Project
 
 - [ ] Working with Real Data
+- [ ] Look at the Bigger Picture
+- [ ] Get the Data
+- [ ] Discover and Visualize the Data to Gain Insights
+- [ ] Prepare the Data for Machine Learning Algorithms
+- [ ] Select and Train a Model
+- [ ] Fine-Tune Your Model
+- [ ] Launch, Monitor, and Maintain Your System
