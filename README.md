@@ -13,10 +13,10 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Instances Based vs Model Based
 - [X] Machine Learning Challenges
 
-### Chapter 2: End to End Machine Learning Project
+### Chapter 2: End to End Machine Learning Project ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch2_E2E%20Machine%20Learning%20Project))
 
-- [ ] Working with Real Data
-- [ ] Look at the Bigger Picture
+- [X] Working with Real Data
+- [X] Look at the Bigger Picture
 - [ ] Get the Data
 - [ ] Discover and Visualize the Data to Gain Insights
 - [ ] Prepare the Data for Machine Learning Algorithms
