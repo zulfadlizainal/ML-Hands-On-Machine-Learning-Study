@@ -1,6 +1,6 @@
 # Hands-On-Machine-Learning-Study
 
-I compiled my study notes and codes based on the book "Hands On Machine Learning with Scikit-Learn and TensorFlow" written by Aurelien Geron. I will write notes and as I go through this book. Whatever checked below is the only content available in this repository. If item is not checked, means I am still working on it.
+I compiled my study notes and codes based on the book "Hands On Machine Learning with Scikit-Learn and TensorFlow" written by Aurelien Geron. I write notes as I go through this book. Whatever checked below is the only content available in this repository. If item is not checked, means I am still working on it. Happy studying!
 <br />
 <br />
 <img src="https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/blob/master/Text%20Book/BookCover.png" alt="Book Cover" title="Book Cover" width=100% height=100% />
