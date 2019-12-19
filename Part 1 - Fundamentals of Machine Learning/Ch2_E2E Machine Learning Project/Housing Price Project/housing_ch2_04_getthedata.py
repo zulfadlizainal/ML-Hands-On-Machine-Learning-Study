@@ -22,24 +22,6 @@ def load_housing_data(housing_path = HOUSING_PATH):
 #Calling Function - To import Data
 housing = load_housing_data()
 
-#Take a quick look of the Data
-housing.head()                  #Top 5 Rows view
-
-#Get some info about the Data
-housing.info()
-
-#To get better overview on Object Data
-housing["ocean_proximity"].value_counts()
-
-#To get better overview on numerical Data
-housing.describe()
-
-#To understand data using Plot (Histogram)
-housing.hist(bins=50, figsize=(20,15))
-plt.show()
-
-print("\n\n\n\n")
-
 #########################Creating a Training + Test Set#########################
 ###Using Scikit-Learn (Categorization/Strata) (Method 5)
 
@@ -60,5 +42,31 @@ for train_index, test_index in split.split(housing, housing["income_cat"]):
 #Check Distribution of Categorized/Stratified Samples
 housing["income_cat"].value_counts() / len(housing)
 
+del train_index, test_index
 
 #################################Exploring data#################################
+
+#Create a copy of Training Database
+housing = train_set_05.copy()
+
+#Visualize Geographical Data
+housing.plot(kind="scatter", x="longitude", y="latitude")
+
+#Adding Alpha to see Scatter Plot based on the Density of samples
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
+
+#Adding
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4,
+            s=housing["population"]/100, label="population", c="median_house_value",
+            cmap=plt.get_cmap("jet"), colorbar=True)
+
+plt.legend()
+plt.show()
+
+###############################Finding Correlation##############################
+
+#Standard Correlation Equation
+corr_matrix = housing.corr()
+
+#Howmuch each attrivutes correlates with median house values
+corr_matrix["median_house_value"].sort_values(ascending=False)
