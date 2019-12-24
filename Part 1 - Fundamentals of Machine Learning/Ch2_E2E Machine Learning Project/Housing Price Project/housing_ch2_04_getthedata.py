@@ -8,6 +8,7 @@ import numpy as np
 #import hashlib
 #from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedShuffleSplit
+from pandas.plotting import scatter_matrix
 
 ###################################Check Data###################################
 
@@ -65,10 +66,36 @@ housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4,
 plt.legend()
 plt.show()
 
-###############################Finding Correlation##############################
+#######################Finding Correlation (Normal Method)######################
 
 # Standard Correlation Equation
 corr_matrix = housing.corr()
 
 # Howmuch each attrivutes correlates with median house values
 corr_matrix["median_house_value"].sort_values(ascending=False)
+
+
+############Finding Correlation (Pandas Scatter Matrix Method)##################
+
+attributes = ["median_house_value", "median_income",
+              "total_rooms", "housing_median_age"]
+
+# Scatter selected attributes with each other
+scatter_matrix(housing[attributes], figsize=(12, 8))
+
+
+#######################Zoom in Chart - Based in Interest########################
+
+housing.plot(kind="scatter", x="median_income",
+             y="median_house_value", alpha=0.1)
+
+
+############################Creating new Attributes#############################
+
+housing["rooms_per_household"] = housing["total_rooms"]/housing["households"]
+housing["bedrooms_per_room"] = housing["total_bedrooms"]/housing["total_rooms"]
+housing["population_per_household"] = housing["population"]/housing["households"]
+
+#Finding correlation with new created Attributes
+corr_matrix = housing.corr()
+corr_matrix["median_house_value"].sort_values(ascending = False)
