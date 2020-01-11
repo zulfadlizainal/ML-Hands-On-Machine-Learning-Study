@@ -22,7 +22,7 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Working with Real Data
 - [X] Look at the Bigger Picture
 - [X] Get the Data
-- [ ] Discover and Visualize the Data to Gain Insights
+- [X] Discover and Visualize the Data to Gain Insights
 - [ ] Prepare the Data for Machine Learning Algorithms
 - [ ] Select and Train a Model
 - [ ] Fine-Tune Your Model
