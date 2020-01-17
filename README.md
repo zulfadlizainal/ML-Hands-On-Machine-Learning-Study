@@ -23,7 +23,7 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Look at the Bigger Picture
 - [X] Get the Data
 - [X] Discover and Visualize the Data to Gain Insights
-- [ ] Prepare the Data for Machine Learning Algorithms
+- [X] Prepare the Data for Machine Learning Algorithms
 - [ ] Select and Train a Model
 - [ ] Fine-Tune Your Model
 - [ ] Launch, Monitor, and Maintain Your System
