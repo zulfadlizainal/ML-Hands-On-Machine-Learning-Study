@@ -3,17 +3,12 @@
 # Import Library
 import os
 import pandas as pd
-#import matplotlib.pyplot as plt
 import numpy as np
-#import hashlib
-#from sklearn.model_selection import train_test_split
-from sklearn.model_selection import StratifiedShuffleSplit
-#from pandas.plotting import scatter_matrix
-from sklearn.impute import SimpleImputer
-#from sklearn.preprocessing import LabelEncoder
-#from sklearn.preprocessing import OneHotEncoder
-from sklearn.preprocessing import LabelBinarizer
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from pandas.plotting import scatter_matrix
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 
 ###################################Check Data###################################
 
@@ -31,52 +26,94 @@ def load_housing_data(housing_path=HOUSING_PATH):
 housing = load_housing_data()
 
 #########################Creating a Training + Test Set#########################
-# Using Scikit-Learn (Categorization/Strata) (Method 5)
 
-# Method 04 is the best, but if your data is small -> Sample Bias could happen
-# Method 05 is good when samples is small and we want to select samples based on categorized main features.
+# Using Scikit-Learn (BEST -RECOMMENDED!) (Method 4)
 
-# Categorize Samples Based on Important Features
-housing["income_cat"] = np.ceil(housing["median_income"] / 1.5)
-housing["income_cat"].where(housing["income_cat"] < 5, 5.0, inplace=True)
+# One liner..
+# Benefit: Can input multiple data set, can input random_state (So the training set will not change)
 
-# Split the data using Strata
-split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
 
-for train_index, test_index in split.split(housing, housing["income_cat"]):
-    train_set = housing.loc[train_index]
-    test_set = housing.loc[test_index]
+################################Exploring data#################################
 
-# Check Distribution of Categorized/Stratified Samples
-housing["income_cat"].value_counts() / len(housing)
+# Create a copy of Training Database
+housing = train_set.copy()
 
-del train_index, test_index
+# Visualize Geographical Data
+housing.plot(kind="scatter", x="longitude", y="latitude")
+
+# Adding Alpha to see Scatter Plot based on the Density of samples
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
+
+# Adding
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4,
+             s=housing["population"] / 100, label="population", c="median_house_value",
+             cmap=plt.get_cmap("jet"), colorbar=True)
+
+plt.legend()
+plt.show()
+
+#######################Finding Correlation (Normal Method)######################
+
+# Standard Correlation Equation
+corr_matrix = housing.corr()
+
+# How much each attrivutes correlates with median house values
+corr_matrix["median_house_value"].sort_values(ascending=False)
+
+
+############Finding Correlation (Pandas Scatter Matrix Method)##################
+
+attributes = ["median_house_value", "median_income",
+              "total_rooms", "housing_median_age"]
+
+# Scatter selected attributes with each other
+scatter_matrix(housing[attributes], figsize=(12, 8))
+
+
+#######################Zoom in Chart - Based in Interest########################
+
+housing.plot(kind="scatter", x="median_income",
+             y="median_house_value", alpha=0.1)
+
+
+############################Creating new Attributes#############################
+
+housing["rooms_per_household"] = housing["total_rooms"] / housing["households"]
+housing["bedrooms_per_room"] = housing["total_bedrooms"] / \
+    housing["total_rooms"]
+housing["population_per_household"] = housing["population"] / \
+    housing["households"]
+
+# Finding correlation with new created Attributes
+corr_matrix = housing.corr()
+corr_matrix["median_house_value"].sort_values(ascending=False)
 
 ##########################Seperating Predictors & Label#########################
 
-train_set_prepared = train_set.drop("median_house_value", axis=1)
-train_set_labels = train_set["median_house_value"].copy()
-
-
-#################Cleaning Data - Using Scikit Learn Imputer#####################
-
-# Define Imputer strategy
-imputer = SimpleImputer(strategy="median")
+housing = train_set.drop("median_house_value", axis=1)
+housing_labels = train_set["median_house_value"].copy()
 
 # Since Imputer can only process numerical data, we need to seperate text attributes
-train_set_num = train_set_prepared.drop("ocean_proximity", axis=1)
-
-# Fit imputer instance to training data
-clean = SimpleImputer.fit(imputer, train_set_num)
-
-# Now can use the trained Imputer to Transform training set, by replacing missing valued by learned medians
-clean = SimpleImputer.transform(imputer, train_set_num)
-# Output is just numpy array
-
-# Change back to pandas dataframe
-train_set_prepared = pd.DataFrame(clean, columns=train_set_num.columns)
+housing_prepared = housing.drop("ocean_proximity", axis=1)
 
 ################################Linear Regression###############################
 
 lin_reg = LinearRegression()
-lin_reg = lin_reg.fit(train_set_prepared, train_set_labels)
+lin_reg.fit(housing_prepared, housing_labels)
+
+#################################Test your model################################
+
+some_data = housing_prepared.iloc[:5]
+some_labels = housing_labels.iloc[:5]
+
+print('\n\nPredictions:', lin_reg.predict(some_data))
+print('\nLabels:', list(some_labels))
+
+################################Measure Error###################################
+
+housing_predictions = lin_reg.predict(housing_prepared)
+lin_mse = mean_squared_error(housing_labels, housing_predictions)
+lin_rmse = np.sqrt(lin_mse)
+print('\nMSE:\t', lin_mse)
+print('\nRMSE:\t', lin_rmse)
