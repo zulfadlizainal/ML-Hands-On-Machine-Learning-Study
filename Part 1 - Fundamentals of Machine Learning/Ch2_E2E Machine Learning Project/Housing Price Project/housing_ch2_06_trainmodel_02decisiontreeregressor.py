@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from pandas.plotting import scatter_matrix
-from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
 
@@ -98,32 +98,24 @@ housing_labels = train_set["median_house_value"].copy()
 # Since Imputer can only process numerical data, we need to seperate text attributes
 housing_prepared = housing.drop("ocean_proximity", axis=1)
 
-################################Linear Regression###############################
+#############################Decision Tree Regressor############################
 
-lin_reg = LinearRegression()
-lin_reg.fit(housing_prepared, housing_labels)
-
-#################################Test your model################################
-
-some_data = housing_prepared.iloc[:5]
-some_labels = housing_labels.iloc[:5]
-
-print('\n\nPredictions:', lin_reg.predict(some_data))
-print('\nLabels:', list(some_labels))
+tree_reg = DecisionTreeRegressor()
+tree_reg.fit(housing_prepared, housing_labels)
 
 ################################Measure Error###################################
 
-housing_predictions = lin_reg.predict(housing_prepared)
-lin_mse = mean_squared_error(housing_labels, housing_predictions)
-lin_rmse = np.sqrt(lin_mse)
-print('\nMSE:\t', lin_mse)
-print('\nRMSE:\t', lin_rmse)
+housing_predictions = tree_reg.predict(housing_prepared)
+tree_mse = mean_squared_error(housing_labels, housing_predictions)
+tree_rmse = np.sqrt(tree_mse)
+print('\nMSE:\t', tree_mse)
+print('\nRMSE:\t', tree_rmse)
 
 #############################Cross Validation###################################
 
-scores = cross_val_score(lin_reg, housing_prepared,
+scores = cross_val_score(tree_reg, housing_prepared,
                          housing_labels, scoring="neg_mean_squared_error", cv=10)
-lin_rmse_scores = np.sqrt(-scores)
+tree_rmse_scores = np.sqrt(-scores)
 
 
 def display_scores(scores):
@@ -132,4 +124,4 @@ def display_scores(scores):
     print('Standard Deviation: ', scores.std())
 
 
-display_scores(lin_rmse_scores)
+display_scores(tree_rmse_scores)
