@@ -24,6 +24,6 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Get the Data
 - [X] Discover and Visualize the Data to Gain Insights
 - [X] Prepare the Data for Machine Learning Algorithms
-- [ ] Select and Train a Model
+- [X] Select and Train a Model
 - [ ] Fine-Tune Your Model
 - [ ] Launch, Monitor, and Maintain Your System
