@@ -25,5 +25,14 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] Discover and Visualize the Data to Gain Insights
 - [X] Prepare the Data for Machine Learning Algorithms
 - [X] Select and Train a Model
-- [ ] Fine-Tune Your Model
-- [ ] Launch, Monitor, and Maintain Your System
+- [X] Fine-Tune Your Model
+
+### Chapter 3: Classification ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch3_Classification))
+
+- [ ] MNIST
+- [ ] Training a Binary Classifier
+- [ ] Performance Measure
+- [ ] Multiclass Classification
+- [ ] Error Analysis
+- [ ] Multilabel Classification
+- [ ] Multioutput Classification
