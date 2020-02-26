@@ -121,6 +121,7 @@ print('\nRMSE:\t', lin_rmse)
 
 #############################Cross Validation###################################
 
+#CV=10 means split the train set to 10 randomly and retrain the model
 scores = cross_val_score(lin_reg, housing_prepared,
                          housing_labels, scoring="neg_mean_squared_error", cv=10)
 lin_rmse_scores = np.sqrt(-scores)

@@ -113,6 +113,7 @@ print('\nRMSE:\t', tree_rmse)
 
 #############################Cross Validation###################################
 
+#CV=10 means split the train set to 10 randomly and retrain the model
 scores = cross_val_score(tree_reg, housing_prepared,
                          housing_labels, scoring="neg_mean_squared_error", cv=10)
 tree_rmse_scores = np.sqrt(-scores)

@@ -4,12 +4,11 @@
 import os
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from pandas.plotting import scatter_matrix
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import GridSearchCV
 
 ###################################Check Data###################################
 
@@ -39,56 +38,6 @@ train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
 
 # Create a copy of Training Database
 housing = train_set.copy()
-
-# Visualize Geographical Data
-housing.plot(kind="scatter", x="longitude", y="latitude")
-
-# Adding Alpha to see Scatter Plot based on the Density of samples
-housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
-
-# Adding
-housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4,
-             s=housing["population"] / 100, label="population", c="median_house_value",
-             cmap=plt.get_cmap("jet"), colorbar=True)
-
-plt.legend()
-plt.show()
-
-#######################Finding Correlation (Normal Method)######################
-
-# Standard Correlation Equation
-corr_matrix = housing.corr()
-
-# How much each attrivutes correlates with median house values
-corr_matrix["median_house_value"].sort_values(ascending=False)
-
-
-############Finding Correlation (Pandas Scatter Matrix Method)##################
-
-attributes = ["median_house_value", "median_income",
-              "total_rooms", "housing_median_age"]
-
-# Scatter selected attributes with each other
-scatter_matrix(housing[attributes], figsize=(12, 8))
-
-
-#######################Zoom in Chart - Based in Interest########################
-
-housing.plot(kind="scatter", x="median_income",
-             y="median_house_value", alpha=0.1)
-
-
-############################Creating new Attributes#############################
-
-housing["rooms_per_household"] = housing["total_rooms"] / housing["households"]
-housing["bedrooms_per_room"] = housing["total_bedrooms"] / \
-    housing["total_rooms"]
-housing["population_per_household"] = housing["population"] / \
-    housing["households"]
-
-# Finding correlation with new created Attributes
-corr_matrix = housing.corr()
-corr_matrix["median_house_value"].sort_values(ascending=False)
 
 ##########################Seperating Predictors & Label#########################
 
@@ -126,3 +75,22 @@ def display_scores(scores):
 
 
 display_scores(forest_rmse_scores)
+
+##############Test Hyperparameters (Grid Search Method)#########################
+
+param_grid = [{'n_estimators': [3, 10, 30], 'max_features': [2, 4, 6, 8]}, {
+    'bootstrap': [False], 'n_estimators': [3, 10], 'max_features': [2, 3, 4]}, ]
+
+grid_search = GridSearchCV(forest_reg, param_grid, cv=5, scoring='neg_mean_squared_error')
+grid_search.fit(housing_prepared, housing_labels)
+
+# To get best parameter
+print(grid_search.best_params_)
+
+# To get best estimator
+print(grid_search.best_estimator_)
+
+cvres = grid_search.cv_results_
+
+for mean_score, params in zip(cvres['mean_test_score'], cvres['params']):
+    print(np.sqrt(-mean_score), params)
