@@ -29,7 +29,7 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 
 ### Chapter 3: Classification ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch3_Classification))
 
-- [ ] MNIST
+- [X] MNIST
 - [ ] Training a Binary Classifier
 - [ ] Performance Measure
 - [ ] Multiclass Classification
