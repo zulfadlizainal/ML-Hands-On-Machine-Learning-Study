@@ -3,8 +3,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import SGDClassifier
-from sklearn.model_selection import cross_val_score
-from sklearn.base import BaseEstimator
+from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import confusion_matrix
 
 # Load data
 mnist = fetch_openml('mnist_784')
@@ -50,21 +50,10 @@ sgd_clf.fit(X_train, y_train_9)
 # Now can use the SGD to detect the image of number 9
 print(sgd_clf.predict([some_digit]))
 
-# Evaluate model using Cross Evaluation
-print(cross_val_score(sgd_clf, X_train, y_train, cv=3, scoring='accuracy'))
-
-# Try to measure the accuracy base on simple classifier model
-
-
-class Never9Classifier(BaseEstimator):
-    def fit(self, X, y=None):
-        pass
-
-    def predict(self, X):
-        return np.zeros((len(X), 1), dtype=bool)
-
-
-never_9_clf = Never9Classifier()
-print(cross_val_score(never_9_clf, X_train, y_train_9, cv=3, scoring='accuracy'))
-
 ################################NEW: START FROM HERE##########################################
+
+# Predict using SGD & check Condusion matrix
+
+y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_9, cv=3)
+print(confusion_matrix(y_train_9, y_train_pred))
+
