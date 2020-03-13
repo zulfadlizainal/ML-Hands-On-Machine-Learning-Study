@@ -30,8 +30,8 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 ### Chapter 3: Classification ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch3_Classification))
 
 - [X] MNIST
-- [ ] Training a Binary Classifier
-- [ ] Performance Measure
+- [X] Training a Binary Classifier
+- [X] Performance Measure
 - [ ] Multiclass Classification
 - [ ] Error Analysis
 - [ ] Multilabel Classification
