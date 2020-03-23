@@ -32,7 +32,7 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 - [X] MNIST
 - [X] Training a Binary Classifier
 - [X] Performance Measure
-- [ ] Multiclass Classification
+- [X] Multiclass Classification
 - [ ] Error Analysis
 - [ ] Multilabel Classification
 - [ ] Multioutput Classification
