@@ -10,29 +10,29 @@ I compiled my study notes and codes based on the book "Hands On Machine Learning
 
 ### Chapter 1: The Machine Learning Landscape ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch1_The%20Machine%20Learning%20Landscape))
 
-- [X] Introduction
-- [X] Machine Learning Types
-- [X] Supervised vs Unsupervised
-- [X] Batch vs Online
-- [X] Instances Based vs Model Based
-- [X] Machine Learning Challenges
+- [X] Introduction :heavy_check_mark:
+- [X] Machine Learning Types :heavy_check_mark:
+- [X] Supervised vs Unsupervised :heavy_check_mark:
+- [X] Batch vs Online :heavy_check_mark:
+- [X] Instances Based vs Model Based :heavy_check_mark:
+- [X] Machine Learning Challenges :heavy_check_mark:
 
 ### Chapter 2: End to End Machine Learning Project ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch2_E2E%20Machine%20Learning%20Project))
 
-- [X] Working with Real Data
-- [X] Look at the Bigger Picture
-- [X] Get the Data
-- [X] Discover and Visualize the Data to Gain Insights
-- [X] Prepare the Data for Machine Learning Algorithms
-- [X] Select and Train a Model
-- [X] Fine-Tune Your Model
+- [X] Working with Real Data :heavy_check_mark:
+- [X] Look at the Bigger Picture :heavy_check_mark:
+- [X] Get the Data :heavy_check_mark:
+- [X] Discover and Visualize the Data to Gain Insights :heavy_check_mark:
+- [X] Prepare the Data for Machine Learning Algorithms :heavy_check_mark:
+- [X] Select and Train a Model :heavy_check_mark:
+- [X] Fine-Tune Your Model :heavy_check_mark:
 
 ### Chapter 3: Classification ([Link](https://github.com/zulfadlizainal/ML-Hands-On-Machine-Learning-Study/tree/master/Part%201%20-%20Fundamentals%20of%20Machine%20Learning/Ch3_Classification))
 
-- [X] MNIST
-- [X] Training a Binary Classifier
-- [X] Performance Measure
-- [X] Multiclass Classification
-- [ ] Error Analysis
+- [X] MNIST :heavy_check_mark:
+- [X] Training a Binary Classifier :heavy_check_mark:
+- [X] Performance Measure :heavy_check_mark:
+- [X] Multiclass Classification :heavy_check_mark: :new:
+- [ ] Error Analysis :arrows_counterclockwise:
 - [ ] Multilabel Classification
 - [ ] Multioutput Classification
